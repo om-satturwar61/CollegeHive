@@ -1,4 +1,5 @@
 from django.shortcuts import render,HttpResponse
+import psycopg2 as ps
 
 def home(request):
     return render(request,'home.html')
@@ -10,8 +11,19 @@ def properties(request):
 def login(request):
     return render(request,'login.html')
 
+def loginaction(request):
+
+    return render(request,'home.html')
+
 def register(request):
     return render(request,'register.html')
+
+def registeraction(request):
+    NAME,EMAIL,PASSWORD=''
+    if request.method=='POST':
+        ps.connect("dbname=collegehive user=postgres")
+        return(request,'login.html')
+
 
 def bharatmata(request):
     return render(request,'bharatmata-society.html')
